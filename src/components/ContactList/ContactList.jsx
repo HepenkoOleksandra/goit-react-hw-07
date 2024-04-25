@@ -1,33 +1,23 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
 import css from './ContactList.module.css';
 import { selectFilteredContacts, selectIsError, selectIsLoading } from "../../redux/contactsSlice";
-// import { selectNameFilter } from "../../redux/filtersSlice";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contactsOps";
 
 const ContactList = () => {
-    const dispatch = useDispatch();
     // const contacts = useSelector(selectContacts);//1
-    const loading = useSelector(selectIsLoading);
-    const error = useSelector(selectIsError);
     // const filter = useSelector(selectNameFilter); //2
     const filterContacts = useSelector(selectFilteredContacts);
+    const loading = useSelector(selectIsLoading);
+    const error = useSelector(selectIsError);
   
-    useEffect(() => {
-        dispatch(fetchContacts());
-    }, [dispatch])
-
     // const filterContacts = contacts.filter((contact) => {
     //     return contact.name.toLowerCase().includes(filter.toLowerCase()) ||
     //         contact.number.toLowerCase().includes(filter.toLowerCase())
     //     }
     // ); 
 
-    
-    
     return (
         <ul className={css.contactList}>
             {loading && <Loader/> }

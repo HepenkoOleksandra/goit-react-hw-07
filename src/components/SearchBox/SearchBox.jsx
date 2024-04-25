@@ -4,7 +4,7 @@ import css from './SearchBox.module.css';
 
 const SearchBox = () => {
     const dispatch = useDispatch();
-     const filter = useSelector(selectNameFilter); //2
+    const filter = useSelector(selectNameFilter); //2
     
     const onAddSearchValue = (e) => {
         const value = e.target.value.trim();
